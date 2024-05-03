@@ -9,18 +9,18 @@ int main()
     int car1 = hours(1), car2 = hours(2) , car3 = hours(3);
 
     // Output
-    //printf("%2dCar%13dHours%21.2fCharge");
+    printf("%s%13s%18s\n","Car","Hours","Charges");
     table(1,car1,calculateCharges(car1));
     table(2,car2,calculateCharges(car2));
     table(3,car3,calculateCharges(car3));
-    printf("TOTAL %d%f",hours,charge)
+    printf("TOTAL %9d%18.2f\n",car1 + car2 + car3,calculateCharges(car1) + calculateCharges(car2) + calculateCharges(car3));
     return 0;
 }
 
 int hours(int car)
 {
     int hours = 0;
-    printf("\nInput the hours rented for car%d:", car);
+    printf("Input the hours rented for car%d:", car);
     scanf("%d", &hours);
     return hours;
 }
@@ -72,5 +72,5 @@ float calculateCharges(int hrs)
 
 void table(int car,int hours,float charge)
 {
-    printf("%2d%13d%21f",car,hours,charge);
+    printf("%2d%13d%18.2f\n",car,hours,charge);
 }
