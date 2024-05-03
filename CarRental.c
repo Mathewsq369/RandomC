@@ -1,7 +1,6 @@
 #include <stdio.h>
 int hours(int car);
 float calculateCharges(int hrs);
-void table(int car, int hours, float charge);
 
 int main()
 {
@@ -10,9 +9,9 @@ int main()
 
     // Output
     printf("%s%13s%18s\n","Car","Hours","Charges");
-    table(1,car1,calculateCharges(car1));
-    table(2,car2,calculateCharges(car2));
-    table(3,car3,calculateCharges(car3));
+    printf("%2d%13d%18.2f\n",1,car1,calculateCharges(car1));
+    printf("%2d%13d%18.2f\n",2,car2,calculateCharges(car2));
+    printf("%2d%13d%18.2f\n",3,car3,calculateCharges(car3));
     printf("TOTAL %9d%18.2f\n",car1 + car2 + car3,calculateCharges(car1) + calculateCharges(car2) + calculateCharges(car3));
     return 0;
 }
@@ -68,9 +67,4 @@ float calculateCharges(int hrs)
     }
 
     return charges;
-}
-
-void table(int car,int hours,float charge)
-{
-    printf("%2d%13d%18.2f\n",car,hours,charge);
 }
