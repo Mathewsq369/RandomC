@@ -33,11 +33,14 @@ float calculateCharges(int hrs)
     {
         if (24 == hrs)
         {
-            charges = 50 + 0.5 * hrs;
+            charges = 50 + 0.5 * 24;
         }
         else
         {
-            rem = hrs - 8;
+            if (hrs > 8)
+            {
+                rem = hrs - 8;
+            }
             charges = 25 + 5 * rem + hrs * 0.5;
         }
     }
@@ -50,7 +53,7 @@ float calculateCharges(int hrs)
         else
         {
             rem = hrs - 24;
-            charges = 24 * 0.5 + calculateCharges(rem) + calculateCharges(24);
+            charges = calculateCharges(rem) + calculateCharges(24);
         }
     }
     else if (72 >= hrs && 48 < hrs)
@@ -62,7 +65,7 @@ float calculateCharges(int hrs)
         else
         {
             rem = hrs - 48;
-            charges = 48 * 0.5 + calculateCharges(48) + calculateCharges(rem);
+            charges = calculateCharges(48) + calculateCharges(rem);
         }
     }
 
