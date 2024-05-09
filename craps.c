@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 
+int wager(void);
+
 enum Status { CONTINUE, WON, LOST };
 int rollDice(void);
 
