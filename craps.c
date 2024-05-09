@@ -1,3 +1,4 @@
+//A game of craps
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
