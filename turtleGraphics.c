@@ -5,7 +5,6 @@ enum STATUS { UP, DOWN };
 enum SIDE { RIGHT, LEFT, CONTINUE};
 void sketchPattern(int flr[][SIZE], size_t size, char inst[]);
 void draw(int flr[][SIZE], size_t size);
-void checkForward(int check, char inst[]);
 void forward(int flr[][SIZE], size_t size, size_t index, enum SIDE side);
 enum STATUS penStatus(int num, enum STATUS status);
 
@@ -41,24 +40,20 @@ void sketchPattern(int flr[][SIZE], size_t size, char inst[])
         }
         else if (inst[i] == '5')
         {
-            checkForward(i,inst);
+            if (inst[i + 1] == ',')
+            {
+                forward(flr,size,i + 2,side);
+            }
+
         }
         else if (inst[i] == '6')
         {
-            //draw(flr,size);
+            draw(flr,size);
         }
         else if(inst[i] == '9')
         {
             //end of data;
         }
-    }
-}
-
-void checkForward(int check, char inst[])
-{
-    if (inst[check + 1] == ',' )
-    {
-        //forward(flr,size,inst[i + 2] - '0', side);
     }
 }
 
@@ -93,4 +88,9 @@ void draw(int flr[][SIZE],size_t size)
         }
         puts("");
     }
+}
+
+void forward(int flr[][SIZE], size_t size, size_t index, enum SIDE side)
+{
+    
 }
