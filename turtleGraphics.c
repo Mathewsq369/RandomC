@@ -1,12 +1,14 @@
 #include <stdio.h>
+#include <stdlib.h>
 #define SIZE 50
-//static enum STATUS { UP, DOWN};
+enum STATUS { UP, /**DOWN**/};
 //static enum SIDE { RIGHT, LEFT, CONTINUE};
 void sketchPattern(int flr[][SIZE], size_t size, char inst[]);
 void draw(int flr[][SIZE], size_t size);
 void turnRight(int flr[][SIZE], size_t size, size_t index);
 void turnLeft(int flr[][SIZE], size_t size, size_t index);
-void penStatus(int num);
+void forward(int flr[][SIZE], size_t size, size_t index);
+void penStatus(int num, enum status);
 
 int main(void)
 {
@@ -18,7 +20,54 @@ int main(void)
 
 void sketchPattern(int flr[][SIZE], size_t size, char inst[])
 {
-    //if ()
+    enum STATUS pen = UP;
+    for (size_t i = 0; i < size; i++)
+    {
+        if (inst[i] == '1')
+        {
+            pen = penStatus(inst[i], pen);
+        }
+        else if (inst[i] == '2')
+        {
+            pen = penStatus(inst[i], pen);
+        }
+        else if(inst[i] == '3')
+        {
+            turnRight(flr, size, i);
+        }
+        else if (inst[i] == '4')
+        {
+            turnLeft(flr,size,i);
+        }
+        else if (inst[i] == '5')
+        {
+            if (inst[i + 1] == ',' )
+            {
+                forward(flr,size,atoi(inst[i + 2]));
+            }
+        }
+        else if (inst[i] == '6')
+        {
+            //print
+        }
+        else if(inst[i] == "9")
+        {
+            //end of data;
+        }
+    }
+}
+
+penStatus(int num, enum status)
+{
+    if (num == 1)
+    {
+        status = UP;
+    }
+    else if (num == 2)
+    {
+        status = DOWN;
+    }
+    return status;
 }
 
 void draw(int flr[][SIZE],size_t size)
