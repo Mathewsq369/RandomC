@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define SIZE 50
-enum STATUS { UP, DOWN};
+enum STATUS { UP, DOWN };
 enum SIDE { RIGHT, LEFT, CONTINUE};
 void sketchPattern(int flr[][SIZE], size_t size, char inst[]);
 void draw(int flr[][SIZE], size_t size);
