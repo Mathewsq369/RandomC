@@ -3,8 +3,9 @@
 #define SIZE 50
 enum STATUS { UP, DOWN};
 enum SIDE { RIGHT, LEFT, CONTINUE};
-void sketchPattern(int flr[][SIZE], size_t size, char inst[]); //sketches
-void draw(int flr[][SIZE], size_t size);                       //draws
+void sketchPattern(int flr[][SIZE], size_t size, char inst[]);
+void draw(int flr[][SIZE], size_t size);
+void checkForward(int check, char inst[]);
 void forward(int flr[][SIZE], size_t size, size_t index, enum SIDE side);
 enum STATUS penStatus(int num, enum STATUS status);
 
@@ -24,11 +25,11 @@ void sketchPattern(int flr[][SIZE], size_t size, char inst[])
     {
         if (inst[i] == '1')
         {
-            pen = penStatus(inst[i] - '0', pen);
+            pen = penStatus(1, pen);
         }
         else if (inst[i] == '2')
         {
-            pen = penStatus(inst[i] - '0', pen);
+            pen = penStatus(2, pen);
         }
         else if(inst[i] == '3')
         {
@@ -40,19 +41,24 @@ void sketchPattern(int flr[][SIZE], size_t size, char inst[])
         }
         else if (inst[i] == '5')
         {
-            if (inst[i + 1] == ',' )
-            {
-                //forward(flr,size,inst[i + 2] - '0', side);
-            }
+            checkForward(i,inst);
         }
         else if (inst[i] == '6')
         {
-            //print
+            //draw(flr,size);
         }
         else if(inst[i] == '9')
         {
             //end of data;
         }
+    }
+}
+
+void checkForward(int check, char inst[])
+{
+    if (inst[check + 1] == ',' )
+    {
+        //forward(flr,size,inst[i + 2] - '0', side);
     }
 }
 
