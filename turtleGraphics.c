@@ -94,4 +94,5 @@ void draw(int flr[][SIZE],size_t size)
 void forward(int flr[][SIZE], size_t size, size_t index, enum SIDE side)
 {
     static size_t progress = 0;
+    // implement functions for right, left, up, down, and both diagonals
 }
