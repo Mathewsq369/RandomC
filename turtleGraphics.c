@@ -87,7 +87,24 @@ void forward(int flr[][SIZE], size_t size, size_t index, enum SIDE side)
 
     if (side == RIGHT)
     {
-        //
+        static int how = 1;
+
+        if (how % 4 == 0)
+        {
+            //do this
+        }
+        else if (how % 3 == 0)
+        {
+            //do this
+        }
+        else if (how % 2 == 0)
+        {
+            //do this
+        }
+        else
+        {
+            //do this
+        }
     }
     else if (side == LEFT)
     {
