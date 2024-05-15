@@ -10,11 +10,10 @@ void right(size_t index, enum SIDE side);
 void left(size_t index, enum SIDE side);
 void diagUp(size_t index, enum SIDE side);
 void diagDown(size_t index, enum SIDE side);
-enum STATUS penStatus(int num, enum STATUS status);
 
 int main(void)
 {
-    char instructions[SIZE + 1] = {'0'};
+    char instructions[SIZE + 1] = {'6'};
     int floor[SIZE][SIZE] = {0};
 
     draw(floor, SIZE);
@@ -28,11 +27,11 @@ void sketchPattern(int flr[][SIZE], size_t size, char inst[])
     {
         if (inst[i] == '1')
         {
-            pen = penStatus(1, pen);
+            pen = UP;
         }
         else if (inst[i] == '2')
         {
-            pen = penStatus(2, pen);
+            pen = DOWN;
         }
         else if(inst[i] == '3')
         {
@@ -61,19 +60,6 @@ void sketchPattern(int flr[][SIZE], size_t size, char inst[])
     }
 }
 
-enum STATUS penStatus(int num, enum STATUS status)
-{
-    if (num == 1)
-    {
-        status = UP;
-    }
-    else if (num == 2)
-    {
-        status = DOWN;
-    }
-    return status;
-}
-
 void draw(int flr[][SIZE],size_t size)
 {
     for (size_t i = 0; i < size; i++)
@@ -96,6 +82,20 @@ void draw(int flr[][SIZE],size_t size)
 
 void forward(int flr[][SIZE], size_t size, size_t index, enum SIDE side)
 {
-    static size_t progress = 0;
+    static size_t progressRow = 0;
+    static size_t progressColumn = 0;
+
+    if (side == RIGHT)
+    {
+        //
+    }
+    else if (side == left)
+    {
+        //
+    }
+    else
+    {
+        //
+    }
     // implement functions for right, left, up, down, and both diagonals
 }
