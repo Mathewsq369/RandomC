@@ -21,7 +21,7 @@ int main(void)
 
 void sketchPattern(int flr[][SIZE], size_t size, char inst[])
 {
-    enum STATUS pen = UP;
+    static enum STATUS pen = UP;
     enum SIDE side = CONTINUE;
     for (size_t i = 0; i < size; i++)
     {
@@ -89,7 +89,7 @@ void forward(int flr[][SIZE], size_t size, size_t index, enum SIDE side)
     {
         //
     }
-    else if (side == left)
+    else if (side == LEFT)
     {
         //
     }
