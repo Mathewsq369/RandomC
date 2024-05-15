@@ -84,10 +84,10 @@ void forward(int flr[][SIZE], size_t size, size_t index, enum SIDE side)
 {
     static size_t progressRow = 0;
     static size_t progressColumn = 0;
+    static int how = 1;
 
     if (side == RIGHT)
     {
-        static int how = 1;
 
         if (how % 4 == 0)
         {
@@ -108,11 +108,33 @@ void forward(int flr[][SIZE], size_t size, size_t index, enum SIDE side)
     }
     else if (side == LEFT)
     {
-        //
+        if (how % 4 == 0)
+        {
+            //do this
+        }
+        else if (how % 3 == 0)
+        {
+            //do this
+        }
+        else if (how % 2 == 0)
+        {
+            //do this
+        }
+        else
+        {
+            //do this
+        }
     }
     else
     {
         //
     }
-    // implement functions for right, left, up, down, and both diagonals
+
+    for (int i = progressRow; i < index; i++)
+    {
+        for (int j = progressColumn; j < index; j++)
+        {
+            // do something
+        }
+    }
 }
