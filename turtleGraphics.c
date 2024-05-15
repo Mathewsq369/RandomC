@@ -8,8 +8,10 @@ void draw(int flr[][SIZE], size_t size);
 void forward(int flr[][SIZE], size_t size, size_t index, enum SIDE side);
 void right(size_t index, enum SIDE side);
 void left(size_t index, enum SIDE side);
-void diagUp(size_t index, enum SIDE side);
-void diagDown(size_t index, enum SIDE side);
+void up(size_t index, enum SIDE side);
+void down(size_t index, enum SIDE side);
+//void diagUp(size_t index, enum SIDE side);
+//void diagDown(size_t index, enum SIDE side);
 
 int main(void)
 {
@@ -45,7 +47,7 @@ void sketchPattern(int flr[][SIZE], size_t size, char inst[])
         {
             if (inst[i + 1] == ',')
             {
-                forward(flr,size,i + 2,side);
+                forward(flr,size,inst[i + 2] - '0',side);
             }
 
         }
@@ -82,6 +84,7 @@ void draw(int flr[][SIZE],size_t size)
 
 void forward(int flr[][SIZE], size_t size, size_t index, enum SIDE side)
 {
+    // use while loops for the assignment
     static size_t progressRow = 0;
     static size_t progressColumn = 0;
     static int how = 1;
@@ -128,13 +131,5 @@ void forward(int flr[][SIZE], size_t size, size_t index, enum SIDE side)
     else
     {
         //
-    }
-
-    for (int i = progressRow; i < index; i++)
-    {
-        for (int j = progressColumn; j < index; j++)
-        {
-            // do something
-        }
     }
 }
