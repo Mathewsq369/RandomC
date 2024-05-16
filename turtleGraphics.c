@@ -144,3 +144,36 @@ size_t right(int flr[][SIZE], size_t size, size_t index, size_t progressRow, siz
     }
     return progressRow;
 }
+
+size_t left(int flr[][SIZE], size_t size, size_t index, size_t progressRow, size_t progressColumn)
+{
+    while (index > 0 && progressRow >= 0)
+    {
+        flr[progressRow][progressColumn] = 1;
+        progressRow--;
+        index--;
+    }
+    return progressRow;
+}
+
+size_t up(int flr[][SIZE], size_t size, size_t index, size_t progressRow, size_t progressColumn)
+{
+    while (index > 0 && progressColumn >= 0)
+    {
+        flr[progressRow][progressColumn] = 1;
+        progressColumn--;
+        index--;
+    }
+    return progressColumn;
+}
+
+size_t down(int flr[][SIZE], size_t size, size_t index, size_t progressRow, size_t progressColumn)
+{
+    while (index > 0 && progressColumn != SIZE - 1)
+    {
+        flr[progressRow][progressColumn] = 1;
+        progressColumn++;
+        index--;
+    }
+    return progressColumn;
+}
