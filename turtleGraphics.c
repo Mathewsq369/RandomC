@@ -6,12 +6,12 @@ enum SIDE { RIGHT, LEFT, CONTINUE};
 void sketchPattern (int flr[][SIZE], size_t size, char inst[]);
 void draw(int flr[][SIZE], size_t size);
 void forward(int flr[][SIZE], size_t size, size_t index, enum SIDE side);
-void right(size_t index, enum SIDE side);
-void left(size_t index, enum SIDE side);
-void up(size_t index, enum SIDE side);
-void down(size_t index, enum SIDE side);
-//void diagUp(size_t index, enum SIDE side);
-//void diagDown(size_t index, enum SIDE side);
+void right(int flr[][SIZE], size_t size, size_t index, size_t progressRow, size_t progressColumn);
+void left(int flr[][SIZE], size_t size, size_t index, size_t progressRow, size_t progressColumn);
+void up(int flr[][SIZE], size_t size, size_t index, size_t progressRow, size_t progressColumn);
+void down(int flr[][SIZE], size_t size, size_t index, size_t progressRow, size_t progressColumn);
+//void diagUp(int flr[][SIZE], size_t size, size_t index, size_t progressRow, size_t progressColumn);
+//void diagDown(int flr[][SIZE], size_t size, size_t index, size_t progressRow, size_t progressColumn);
 
 int main(void)
 {
@@ -133,3 +133,5 @@ void forward(int flr[][SIZE], size_t size, size_t index, enum SIDE side)
         //
     }
 }
+
+void right(int flr[][SIZE], size_t size, size_t index, size_t progressRow, size_t progressColumn)
