@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #define SIZE 50
 enum STATUS { UP, DOWN };
-enum SIDE { RIGHT, LEFT, CONTINUE};
+enum SIDE { RIGHT, LEFT };
 void sketchPattern(int flr[][SIZE], size_t size, char inst[]);
 void draw(int flr[][SIZE], size_t size);
 void forward(int flr[][SIZE], size_t size, size_t index, enum SIDE side);
@@ -24,7 +24,7 @@ int main(void)
 void sketchPattern(int flr[][SIZE], size_t size, char inst[])
 {
     static enum STATUS pen = UP;
-    enum SIDE side = CONTINUE;
+    enum SIDE side = RIGHT;
     for (size_t i = 0; i < size; i++)
     {
         if (inst[i] == '1')
@@ -88,49 +88,48 @@ void forward(int flr[][SIZE], size_t size, size_t index, enum SIDE side)
     static size_t progressRow = 0;
     static size_t progressColumn = 0;
     static int how = 1;
+    static int how_l = 1;
 
     if (side == RIGHT)
     {
 
         if (how % 4 == 0)
         {
-            //do this
+            progressColumn = up(flr,size,index,progressRow,progressColumn);
         }
         else if (how % 3 == 0)
         {
-            //do this
+            progressRow = left(flr,size,index,progressRow,progressColumn);
         }
         else if (how % 2 == 0)
         {
-            //do this
+            progressColumn = down(flr,size,index,progressRow,progressColumn);
         }
         else
         {
-            //do this
+            progressRow = right(flr,size,index,progressRow,progressColumn);
         }
+        how++;
     }
     else if (side == LEFT)
     {
-        if (how % 4 == 0)
+        if (how_l % 4 == 0)
         {
-            //do this
+            progressColumn = up(flr,size,index,progressRow,progressColumn);
         }
-        else if (how % 3 == 0)
+        else if (how_l % 3 == 0)
         {
-            //do this
+            progressRow = right(flr,size,index,progressRow,progressColumn);
         }
-        else if (how % 2 == 0)
+        else if (how_l % 2 == 0)
         {
-            //do this
+            progressColumn = down(flr,size,index,progressRow,progressColumn);
         }
         else
         {
-            //do this
+            progressRow = left(flr,size,index,progressRow,progressColumn);
         }
-    }
-    else
-    {
-        //
+        how_l++;
     }
 }
 
