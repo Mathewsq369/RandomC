@@ -3,7 +3,7 @@
 #define SIZE 50
 enum STATUS { UP, DOWN };
 enum SIDE { RIGHT, LEFT };
-void sketchPattern(int flr[][SIZE], size_t size, char inst[]);
+void sketchPattern(int flr[][SIZE], size_t size, int inst[]);
 void draw(int flr[][SIZE], size_t size);
 void forward(int flr[][SIZE], size_t size, size_t index, enum SIDE side);
 size_t right(int flr[][SIZE], size_t size, size_t index, size_t progressRow, size_t progressColumn);
@@ -15,49 +15,46 @@ size_t down(int flr[][SIZE], size_t size, size_t index, size_t progressRow, size
 
 int main(void)
 {
-    char instructions[SIZE + 1] = {'6'};
+    int instructions[SIZE] = {2,5,12,3,5,12,3,5,12,3,5,12,1,6,9};
     int floor[SIZE][SIZE] = {0};
 
-    draw(floor, SIZE);
+    sketchPattern(floor,SIZE,instructions);
 }
 
-void sketchPattern(int flr[][SIZE], size_t size, char inst[])
+void sketchPattern(int flr[][SIZE], size_t size, int inst[])
 {
     static enum STATUS pen = UP;
     enum SIDE side = RIGHT;
     for (size_t i = 0; i < size; i++)
     {
-        if (inst[i] == '1')
+        if (inst[i] == 1)
         {
             pen = UP;
         }
-        else if (inst[i] == '2')
+        else if (inst[i] == 2)
         {
             pen = DOWN;
         }
-        else if(inst[i] == '3')
+        else if(inst[i] == 3)
         {
             side = RIGHT;
         }
-        else if (inst[i] == '4')
+        else if (inst[i] == 4)
         {
             side = LEFT;
         }
-        else if (inst[i] == '5')
+        else if (inst[i] == 5)
         {
-            if (inst[i + 1] == ',')
-            {
-                forward(flr,size,inst[i + 2] - '0',side);
-            }
+            forward(flr,size,inst[i + 1],side);
 
         }
-        else if (inst[i] == '6')
+        else if (inst[i] == 6)
         {
             draw(flr,size);
         }
-        else if(inst[i] == '9')
+        else if(inst[i] == 9)
         {
-            //end of data;
+            break;
         }
     }
 }
@@ -69,14 +66,14 @@ void draw(int flr[][SIZE],size_t size)
         for (size_t j = 0; j < size; j++)
         {
             printf("%d",flr[i][j]);
-            //if (flr[i][j] == 0)
-            //{
-                //printf(" ");
-            //}
-            //else if (flr[i][j] == 1)
-            //{
-                //printf("*");
-            //}
+            if (flr[i][j] == 0)
+            {
+                printf(" ");
+            }
+            else if (flr[i][j] == 1)
+            {
+                printf("*");
+            }
         }
         puts("");
     }
@@ -84,7 +81,6 @@ void draw(int flr[][SIZE],size_t size)
 
 void forward(int flr[][SIZE], size_t size, size_t index, enum SIDE side)
 {
-    // use while loops for the assignment
     static size_t progressRow = 0;
     static size_t progressColumn = 0;
     static int how = 1;
