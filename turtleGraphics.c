@@ -65,7 +65,6 @@ void draw(int flr[][SIZE],size_t size)
     {
         for (size_t j = 0; j < size; j++)
         {
-            printf("%d",flr[i][j]);
             if (flr[i][j] == 0)
             {
                 printf(" ");
