@@ -135,3 +135,6 @@ void forward(int flr[][SIZE], size_t size, size_t index, enum SIDE side)
 }
 
 void right(int flr[][SIZE], size_t size, size_t index, size_t progressRow, size_t progressColumn)
+{
+    //do something
+}
