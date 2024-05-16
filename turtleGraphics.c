@@ -3,15 +3,15 @@
 #define SIZE 50
 enum STATUS { UP, DOWN };
 enum SIDE { RIGHT, LEFT, CONTINUE};
-void sketchPattern (int flr[][SIZE], size_t size, char inst[]);
+void sketchPattern(int flr[][SIZE], size_t size, char inst[]);
 void draw(int flr[][SIZE], size_t size);
 void forward(int flr[][SIZE], size_t size, size_t index, enum SIDE side);
-void right(int flr[][SIZE], size_t size, size_t index, size_t progressRow, size_t progressColumn);
-void left(int flr[][SIZE], size_t size, size_t index, size_t progressRow, size_t progressColumn);
-void up(int flr[][SIZE], size_t size, size_t index, size_t progressRow, size_t progressColumn);
-void down(int flr[][SIZE], size_t size, size_t index, size_t progressRow, size_t progressColumn);
-//void diagUp(int flr[][SIZE], size_t size, size_t index, size_t progressRow, size_t progressColumn);
-//void diagDown(int flr[][SIZE], size_t size, size_t index, size_t progressRow, size_t progressColumn);
+size_t right(int flr[][SIZE], size_t size, size_t index, size_t progressRow, size_t progressColumn);
+size_t left(int flr[][SIZE], size_t size, size_t index, size_t progressRow, size_t progressColumn);
+size_t up(int flr[][SIZE], size_t size, size_t index, size_t progressRow, size_t progressColumn);
+size_t down(int flr[][SIZE], size_t size, size_t index, size_t progressRow, size_t progressColumn);
+//size_t diagUp(int flr[][SIZE], size_t size, size_t index, size_t progressRow, size_t progressColumn);
+//size_t diagDown(int flr[][SIZE], size_t size, size_t index, size_t progressRow, size_t progressColumn);
 
 int main(void)
 {
@@ -134,7 +134,13 @@ void forward(int flr[][SIZE], size_t size, size_t index, enum SIDE side)
     }
 }
 
-void right(int flr[][SIZE], size_t size, size_t index, size_t progressRow, size_t progressColumn)
+size_t right(int flr[][SIZE], size_t size, size_t index, size_t progressRow, size_t progressColumn)
 {
-    //do something
+    while (index > 0 && progressRow != SIZE - 1)
+    {
+        flr[progressRow][progressColumn] = 1;
+        progressRow++;
+        index--;
+    }
+    return progressRow;
 }
