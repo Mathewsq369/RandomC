@@ -19,6 +19,8 @@ int main(void)
     int floor[SIZE][SIZE] = {0};
 
     sketchPattern(floor,SIZE,instructions);
+
+    // pending implementation... taking input from user
 }
 
 void sketchPattern(int flr[][SIZE], size_t size, int inst[])
