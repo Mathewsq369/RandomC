@@ -21,6 +21,7 @@ int main(void)
     sketchPattern(floor,SIZE,instructions);
 
     // pending implementation... taking input from user
+    // pending implementation... using array of strings
 }
 
 void sketchPattern(int flr[][SIZE], size_t size, int inst[])
